@@ -30,3 +30,11 @@ UPDATE animals SET species = 'unspecified';
 SELECT * FROM animals;
 ROLLBACK;
 SELECT * FROM animals;
+
+/*Update species column with 'digimon' or 'pokemon'*/
+BEGIN;
+UPDATE animals SET species = 'digimon'
+WHERE name LIKE '%mon';
+UPDATE animals SET species = 'pokemon'
+WHERE name NOT LIKE '%mon';
+COMMIT;
