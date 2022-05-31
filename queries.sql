@@ -27,9 +27,7 @@ SELECT * FROM animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
 /*Update and revert species column*/
 BEGIN;
 UPDATE animals SET species = 'unspecified';
-SELECT * FROM animals;
 ROLLBACK;
-SELECT * FROM animals;
 
 /*Update species column with 'digimon' or 'pokemon'*/
 BEGIN;
@@ -38,3 +36,8 @@ WHERE name LIKE '%mon';
 UPDATE animals SET species = 'pokemon'
 WHERE name NOT LIKE '%mon';
 COMMIT;
+
+/*Delete all records then roll back transaction*/
+BEGIN;
+DELETE FROM animals;
+ROLLBACK;
