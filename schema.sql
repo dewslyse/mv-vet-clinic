@@ -8,6 +8,13 @@ CREATE TABLE owners (
     PRIMARY KEY(id)
 );
 
+-- Species table
+CREATE TABLE species (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name TEXT,
+    PRIMARY KEY(id)
+);
+
 -- Animals table
 CREATE TABLE animals (
     id INT GENERATED ALWAYS AS IDENTITY,
