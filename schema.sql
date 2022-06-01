@@ -23,8 +23,10 @@ CREATE TABLE animals (
     escape_attempts INT,
     neutered BOOLEAN,
     weight_kg DECIMAL NOT NULL,
+    species TEXT,
     PRIMARY KEY(id)
 );
 
+-- Remove species column from animals table
 ALTER TABLE animals
-ADD COLUMN species TEXT;
+DROP COLUMN species;
