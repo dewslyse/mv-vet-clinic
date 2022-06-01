@@ -1,5 +1,14 @@
 /* Database schema to keep the structure of entire database. */
 
+-- Owners table
+CREATE TABLE owners (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    full_name TEXT,
+    age INT,
+    PRIMARY KEY(id)
+);
+
+-- Animals table
 CREATE TABLE animals (
     id INT GENERATED ALWAYS AS IDENTITY,
     name TEXT NOT NULL,
