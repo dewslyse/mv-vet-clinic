@@ -47,3 +47,22 @@ CREATE TABLE vets (
     date_of_registration DATE,
     PRIMARY KEY(id)
 );
+
+-- Join table: Specializations
+CREATE TABLE specializations (
+    species_id INT,
+    vets_id INT,
+    PRIMARY KEY (species_id, vets_id),
+    FOREIGN KEY (species_id) REFERENCES species (id),
+    FOREIGN KEY (vets_id) REFERENCES vets (id)
+);
+
+-- Join table: Visits
+CREATE TABLE visits (
+    animals_id INT,
+    vets_id INT,
+    date_of_visit DATE,
+    PRIMARY KEY (animals_id, vets_id),
+    FOREIGN KEY (animals_id) REFERENCES animals (id),
+    FOREIGN KEY (vets_id) REFERENCES vets (id)
+);
