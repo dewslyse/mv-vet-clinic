@@ -1,5 +1,21 @@
 /* Database schema to keep the structure of entire database. */
 
+-- Owners table
+CREATE TABLE owners (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    full_name TEXT,
+    age INT,
+    PRIMARY KEY(id)
+);
+
+-- Species table
+CREATE TABLE species (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name TEXT,
+    PRIMARY KEY(id)
+);
+
+-- Animals table
 CREATE TABLE animals (
     id INT GENERATED ALWAYS AS IDENTITY,
     name TEXT NOT NULL,
@@ -7,8 +23,18 @@ CREATE TABLE animals (
     escape_attempts INT,
     neutered BOOLEAN,
     weight_kg DECIMAL NOT NULL,
+    species TEXT,
     PRIMARY KEY(id)
 );
 
+-- Remove species column from animals table
 ALTER TABLE animals
-ADD COLUMN species TEXT;
+DROP COLUMN species;
+
+-- Add column species_id which is a foreign key referencing species table
+ALTER TABLE animals
+ADD COLUMN species_id INT REFERENCES species (id);
+
+-- Add column owner_id which is a foreign key referencing the owners table
+ALTER TABLE animals
+ADD COLUMN owner_id INT REFERENCES owners (id);
