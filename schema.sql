@@ -44,7 +44,7 @@ CREATE TABLE vets (
     id INT GENERATED ALWAYS AS IDENTITY,
     name TEXT,
     age INT,
-    date_of_registration DATE,
+    date_of_graduation DATE,
     PRIMARY KEY(id)
 );
 
