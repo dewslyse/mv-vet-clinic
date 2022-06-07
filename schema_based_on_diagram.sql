@@ -24,3 +24,12 @@ CREATE TABLE treatments (
   name VARCHAR(255),
   PRIMARY KEY(id)
 );
+
+-- Invoices table
+CREATE TABLE invoices (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  total_amount DECIMAL,
+  generated_at TIMESTAMP(0),
+  payed_at TIMESTAMP(0),
+  medical_history_id INT
+);
