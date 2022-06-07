@@ -14,7 +14,8 @@ CREATE TABLE medical_histories (
   admitted_at TIMESTAMP(0),
   patient_id INT,
   status VARCHAR(255),
-  PRIMARY KEY(id)
+  PRIMARY KEY(id),
+  FOREIGN KEY (patients_id) REFERENCES patients(id)
 );
 
 -- Treatments table
@@ -32,6 +33,7 @@ CREATE TABLE invoices (
   generated_at TIMESTAMP(0),
   payed_at TIMESTAMP(0),
   medical_history_id INT
+  FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id)
 );
 
 -- Invoices items table
@@ -42,5 +44,7 @@ CREATE TABLE invoice_items (
   total_price DECIMAL,
   invoice_id INT,
   treatment_id INT,
-  PRIMARY KEY(id)
+  PRIMARY KEY(id),
+  FOREIGN KEY (invoice_id) REFERENCES invoices(id),
+  FOREIGN KEY (treatment_id) REFERENCES treatments(id)
 );
