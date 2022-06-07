@@ -49,6 +49,7 @@ CREATE TABLE invoice_items (
   FOREIGN KEY (treatment_id) REFERENCES treatments(id)
 );
 
+-- Join Table
 CREATE TABLE medical_histories_treatments (
   id SERIAL PRIMARY KEY,
   medical_histories_id INT,
@@ -56,3 +57,14 @@ CREATE TABLE medical_histories_treatments (
   FOREIGN KEY (medical_histories_id) REFERENCES medical_histories(id),
   FOREIGN KEY (treatment_id) REFERENCES treatments(id)
 )
+
+-- Foreign Key Indexes
+CREATE INDEX medical_histories_index ON medical_histories(id);
+
+CREATE INDEX patients_index ON patients(id);
+
+CREATE INDEX treatments_index ON treatments(id);
+
+CREATE INDEX invoices_index ON invoices(id);
+
+CREATE INDEX ON medical_histories_treatments(treatment_id, medical_histories_id);
