@@ -33,3 +33,14 @@ CREATE TABLE invoices (
   payed_at TIMESTAMP(0),
   medical_history_id INT
 );
+
+-- Invoices items table
+CREATE TABLE invoice_items (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  unit_price DECIMAL,
+  quantity INT,
+  total_price DECIMAL,
+  invoice_id INT,
+  treatment_id INT,
+  PRIMARY KEY(id)
+);
